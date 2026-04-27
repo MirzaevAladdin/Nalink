@@ -1,100 +1,154 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中標津 Link</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中標津 Link</title>
+</head>
+<body style="margin:0; font-family:Arial; background:#f6fff6;">
 
-<style>
-* { box-sizing: border-box; }
-body { margin:0; font-family:Arial; background:#f6fff6; padding:20px; }
-
-.card {
-  background:white;
-  padding:15px;
-  border-radius:16px;
-  margin-bottom:10px;
-}
-
-button {
-  background:#16a34a;
-  color:white;
-  border:none;
-  padding:10px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-input {
-  width:100%;
-  padding:10px;
-  margin:5px 0;
-  border-radius:10px;
-  border:1px solid #ddd;
+<div style="padding:20px;">
+  <style>
+* {
+  box-sizing: border-box;
 }
 </style>
-</head>
 
-<body>
+  
+<div id="login" style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+">
 
-<!-- LOGIN -->
-<div id="login" style="display:flex;justify-content:center;align-items:center;height:100vh;">
-  <div class="card" style="max-width:320px;width:100%;text-align:center;">
-    <h2>ログイン</h2>
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <button onclick="login()">ログイン</button>
+  <div style="
+  background:white;
+  padding:30px 25px;
+  border-radius:20px;
+  width:100%;
+  max-width:320px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  text-align:center;
+  ">
+
+    <!-- LOGO -->
+    <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:20px;">
+      <div style="width:40px;height:40px;border-radius:50%;border:2px solid #16a34a;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#16a34a;">中</div>
+      <div style="font-size:22px;font-weight:bold;color:#15803d;">Link</div>
+    </div>
+
+    <h2 style="margin-bottom:20px;color:#166534;">ログイン</h2>
+
+    <!-- INPUT -->
+    <input id="email" type="email" placeholder="Email"
+    style="
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    margin-bottom:15px;
+    font-size:14px;
+    outline:none;
+    ">
+
+    <input id="password" type="password" placeholder="Password"
+    style="
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    margin-bottom:28px;
+    font-size:14px;
+    outline:none;
+    ">
+
+    <!-- BUTTON -->
+    <button onclick="login()" style="
+    width:100%;
+    padding:12px;
+    background:#16a34a;
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    ">
+      ログイン
+    </button>
+
   </div>
+
 </div>
 
-<!-- APP -->
-<div id="app" style="display:none;">
+  <!-- APP -->
+  <div id="app" style="display:none;">
 
-  <h3 id="user"></h3>
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div></div>
+      <div id="user" style="color:#166534;"></div>
+    </div>
 
-  <button onclick="show('home')">🏠 ホーム</button>
-  <button onclick="show('medical')">🏥 医療</button>
-  <button onclick="show('booking')">📋 予約一覧</button>
-  <button onclick="show('tourism')">🗺️ マップ</button>
+    <div style="margin:20px 0;">
+      <button onclick="show('home')" style="margin:5px;padding:10px 16px;background:#16a34a;color:white;border:none;border-radius:10px;">🏠 ホーム</button>
+      <button onclick="show('medical')" style="margin:5px;padding:10px 16px;background:#16a34a;color:white;border:none;border-radius:10px;">🏥 医療</button>
+      <button onclick="show('booking')" style="margin:5px;padding:10px 16px;background:#16a34a;color:white;border:none;border-radius:10px;">📋 予約一覧</button>
+      <button onclick="show('tourism')" style="margin:5px;padding:10px 16px;background:#16a34a;color:white;border:none;border-radius:10px;">🗺️ 観光</button>
+    </div>
 
-  <!-- HOME -->
-  <div id="home" class="card">
-    <h3>病院</h3>
-    <button onclick="openBooking('中標津病院')">中標津病院</button>
-    <button onclick="openBooking('さくらクリニック')">さくらクリニック</button>
-  </div>
+    <!-- HOME -->
+    <div id="home">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:white;padding:15px;border-radius:16px;box-shadow:0 6px 15px rgba(0,0,0,0.08);">
+          <h3>🏥 中標津病院</h3>
+          <button onclick="openBooking('中標津病院')" style="background:#16a34a;color:white;border:none;padding:8px 12px;border-radius:8px;">予約</button>
+        </div>
+        <div style="background:white;padding:15px;border-radius:16px;box-shadow:0 6px 15px rgba(0,0,0,0.08);">
+          <h3>🏥 さくらクリニック</h3>
+          <button onclick="openBooking('さくらクリニック')" style="background:#16a34a;color:white;border:none;padding:8px 12px;border-radius:8px;">予約</button>
+        </div>
+      </div>
+    </div>
 
-  <!-- FORM -->
-  <div id="medical" class="card" style="display:none;">
-    <input id="place" placeholder="病院名">
-    <input id="date" type="date">
-    <input id="time" type="time">
-    <button onclick="book()">予約する</button>
-  </div>
+    <!-- MEDICAL -->
+    <div id="medical" style="display:none;">
+      <div style="background:white;padding:15px;border-radius:16px;">
+        <h2>🏥 医療サービス</h2>
+        <input id="place" type="text" placeholder="病院名" style="padding:8px;margin:5px;">
+        <input id="date" type="date" style="padding:8px;margin:5px;">
+        <input id="time" type="time" style="padding:8px;margin:5px;">
+        <br>
+        <button onclick="book()" style="background:#16a34a;color:white;padding:10px;border:none;border-radius:8px;">予約する</button>
+      </div>
+    </div>
 
-  <!-- LIST -->
-  <div id="booking" class="card" style="display:none;">
-    <div id="bookingList"></div>
-  </div>
+    <!-- BOOKING LIST -->
+    <div id="booking" style="display:none;">
+      <div id="bookingList"></div>
+    </div>
 
-  <!-- MAP -->
-  <div id="tourism" class="card" style="display:none;">
-    <iframe src="https://www.google.com/maps?q=中標津町&output=embed"
-    width="100%" height="300" style="border:0;border-radius:12px;"></iframe>
-  </div>
+    <!-- MAP TAB (FIXED) -->
+    <div id="tourism" style="display:none;">
+      <div style="background:white;padding:15px;border-radius:16px;">
+        <h2>🗺️ マップ</h2>
+        <iframe src="https://www.google.com/maps?q=中標津町&output=embed" width="100%" height="300" style="border:0;border-radius:12px;"></iframe>
+      </div>
+    </div>
 
-</div>
+    <!-- MODAL -->
+    <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+      <div style="background:white; padding:20px; border-radius:16px; width:90%; max-width:400px;">
+        <h2 style="color:#15803d;">✅ 予約完了</h2>
+        <p id="info"></p>
+        <iframe id="mapFrame" width="100%" height="200" style="border:0;border-radius:10px;"></iframe>
+        <br><br>
+        <a id="routeLink" target="_blank" style="color:green;">📍 ルートを表示</a>
+        <br><br>
+        <button onclick="closeModal()" style="background:#16a34a;color:white;padding:10px;border:none;border-radius:8px;width:100%;">閉じる</button>
+      </div>
+    </div>
 
-<!-- MODAL -->
-<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;">
-  <div class="card" style="max-width:400px;width:90%;">
-    <h2>✅ 予約完了</h2>
-    <p id="info"></p>
-    <iframe id="mapFrame" width="100%" height="200"></iframe>
-    <br><br>
-    <a id="routeLink" target="_blank">📍 ルート</a>
-    <br><br>
-    <button onclick="closeModal()">閉じる</button>
   </div>
 </div>
 
@@ -111,9 +165,8 @@ function login(){
 }
 
 function show(section){
-  ['home','medical','booking','tourism'].forEach(id=>{
-    document.getElementById(id).style.display='none';
-  });
+  const sections = ['home','medical','booking','tourism'];
+  sections.forEach(id => document.getElementById(id).style.display='none');
   document.getElementById(section).style.display='block';
 }
 
@@ -132,35 +185,34 @@ function book(){
     return;
   }
 
-  bookings.push({place, date, time});
+  const data = {place,date,time};
+  bookings.push(data);
   renderBookings();
 
-  const encoded = encodeURIComponent(place);
-
-  document.getElementById('info').innerText = `${place}\n${date} ${time}`;
-  document.getElementById('mapFrame').src = `https://www.google.com/maps?q=${encoded}&output=embed`;
-  document.getElementById('routeLink').href = `https://www.google.com/maps/dir/?api=1&destination=${encoded}`;
+  document.getElementById('info').innerText = `${place} \n ${date} ${time}`;
+  document.getElementById('mapFrame').src = `https://www.google.com/maps?q=${place}&output=embed`;
+  document.getElementById('routeLink').href = `https://www.google.com/maps/dir/?api=1&destination=${place}`;
 
   document.getElementById('modal').style.display='flex';
 }
 
 function renderBookings(){
-  const el = document.getElementById('bookingList');
-  el.innerHTML = '';
+  const container = document.getElementById('bookingList');
+  container.innerHTML = '';
 
   bookings.forEach((b,i)=>{
-    el.innerHTML += `
-    <div class="card">
+    container.innerHTML += `
+    <div style="background:white;padding:15px;border-radius:16px;margin-bottom:10px;">
       <h3>${b.place}</h3>
       <p>📅 <input type="date" value="${b.date}" onchange="updateDate(${i}, this.value)"></p>
       <p>⏰ <input type="time" value="${b.time}" onchange="updateTime(${i}, this.value)"></p>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(b.place)}" target="_blank">🚗 ルート</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${b.place}" target="_blank">🚗 ルート</a>
     </div>`;
   });
 }
 
-function updateDate(i,v){ bookings[i].date = v; }
-function updateTime(i,v){ bookings[i].time = v; }
+function updateDate(i,val){ bookings[i].date = val; }
+function updateTime(i,val){ bookings[i].time = val; }
 
 function closeModal(){
   document.getElementById('modal').style.display='none';
