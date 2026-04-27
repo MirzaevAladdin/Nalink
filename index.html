@@ -96,7 +96,123 @@ height:100vh;
       <button onclick="show('booking')" style="margin:5px;padding:10px 16px;background:#16a34a;color:white;border:none;border-radius:10px;">📋 予約一覧</button>
       <button onclick="show('tourism')" style="margin:5px;padding:10px 16px;background:#16a34a;color:white;border:none;border-radius:10px;">🗺️ 観光</button>
     </div>
+<!-- VOICE ASSISTANT 中LINK -->
+<style>
+#assistantBtn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#16a34a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:26px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  z-index:999;
+  transition:0.3s;
+}
+#assistantBtn.active{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#22c55e;
+  box-shadow:0 0 0 10px rgba(34,197,94,0.2);
+}
 
+#assistantPanel{
+  position:fixed;
+  bottom:100px;
+  right:20px;
+  width:260px;
+  background:white;
+  border-radius:16px;
+  padding:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  display:none;
+  z-index:999;
+}
+</style>
+
+<div id="assistantBtn">🎤</div>
+
+<div id="assistantPanel">
+  <b>中LINK Assistant</b>
+  <p id="assistantText">「中Link」と言ってください</p>
+</div>
+
+<script>
+const btn = document.getElementById("assistantBtn");
+const panel = document.getElementById("assistantPanel");
+const text = document.getElementById("assistantText");
+
+let recognizing = false;
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
+recognition.lang = "ja-JP";
+recognition.continuous = true;
+
+btn.onclick = () => {
+  if(!recognizing){
+    recognition.start();
+    btn.classList.add("active");
+    panel.style.display = "block";
+    text.innerText = "聞いています...";
+    recognizing = true;
+  } else {
+    recognition.stop();
+    btn.classList.remove("active");
+    text.innerText = "停止しました";
+    recognizing = false;
+  }
+};
+
+recognition.onresult = (event) => {
+  const speech = event.results[event.results.length-1][0].transcript;
+  text.innerText = "👉 " + speech;
+
+  // 🔥 Активация словом 中Link
+  if(speech.includes("中リンク") || speech.includes("中link")){
+    text.innerText = "はい、どうしました？";
+    speak("はい、どうしました？");
+  }
+
+  // 🏥 запись к врачу
+  if(speech.includes("病院") || speech.includes("予約")){
+    document.getElementById("place").value = "中標津病院";
+    document.getElementById("date").value = new Date().toISOString().split('T')[0];
+    document.getElementById("time").value = "10:00";
+
+    speak("病院の予約を準備しました");
+    show("medical");
+  }
+
+  // 🗺 карта
+  if(speech.includes("マップ") || speech.includes("地図")){
+    show("tourism");
+    speak("マップを開きました");
+  }
+
+  // 🏠 домой
+  if(speech.includes("ホーム")){
+    show("home");
+    speak("ホームを開きました");
+  }
+};
+
+// голос ответ
+function speak(msg){
+  const utter = new SpeechSynthesisUtterance(msg);
+  utter.lang = "ja-JP";
+  speechSynthesis.speak(utter);
+}
+</script>
     <!-- HOME -->
     <div id="home">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
