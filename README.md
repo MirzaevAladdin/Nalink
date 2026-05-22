@@ -25,5 +25,11 @@ The purpose of this project is to improve my front-end development skills and un
 ## 📌 Notes
 This is a learning project and will be improved over time.
 
-## 📫 Author
+## 📫 Author<img width="959" height="518" alt="スクリーンショット 2026-05-22 155116" src="https://github.com/user-attachments/assets/84865e43-5a11-4255-bb0e-3204e38e0e3f" />
+
+![Uploading スクリーンショット 2026-05-22 155116.png…]()
+<img width="960" height="510" alt="スクリーンショット 2026-05-22 155142" src="https://github.com/user-attachments/assets/6d6474d6-7c46-4421-a541-0e01999f9c68" />
+
+
+
 GitHub: https://github.com/MirzaevAladdin
