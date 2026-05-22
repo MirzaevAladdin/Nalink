@@ -9,9 +9,8 @@ This project was created as part of my web development practice.
 It demonstrates basic front-end structure and page design.
 
 ## 🛠️ Technologies Used
-- HTML5
-- CSS3
-- JavaScript (basic)
+- HTML
+
 
 ## 📂 Features
 - Simple and clean layout
